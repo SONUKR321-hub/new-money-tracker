@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Income/Expense Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Personal Income/Expense Tracker</h1>
+        
+        <div class="form-container">
+            <h2>Add New Record</h2>
+            <form id="record-form">
+                <div class="form-group">
+                    <label for="date">Date:</label>
+                    <input type="date" id="date" required>
+                </div>
+                <div class="form-group">
+                    <label for="credit">Credit (₹):</label>
+                    <input type="number" id="credit" min="0" step="0.01">
+                </div>
+                <div class="form-group">
+                    <label for="source">Source of Income:</label>
+                    <input type="text" id="source" placeholder="Where money came from">
+                </div>
+                <div class="form-group">
+                    <label for="description">Spend Description:</label>
+                    <input type="text" id="description">
+                </div>
+                <div class="form-group">
+                    <label for="amount">Amount Spent (₹):</label>
+                    <input type="number" id="amount" min="0" step="0.01">
+                </div>
+                <div class="form-group">
+                    <label for="recipient">Recipient of Expense:</label>
+                    <input type="text" id="recipient" placeholder="Who received the money">
+                </div>
+                <div class="form-group">
+                    <label for="ishan-payment">Payment from Ishan:</label>
+                    <input type="checkbox" id="ishan-payment">
+                    <label for="ishan-payment">Received</label>
+                </div>
+                <button type="submit" class="btn">Add Record</button>
+            </form>
+        </div>
+        
+        <div class="summary">
+            <div class="summary-item">
+                <h3>Total Credit</h3>
+                <p id="total-credit">₹0</p>
+            </div>
+            <div class="summary-item">
+                <h3>Total Spent</h3>
+                <p id="total-spent">₹0</p>
+            </div>
+            <div class="summary-item">
+                <h3>Balance Left</h3>
+                <p id="balance-left">₹0</p>
+            </div>
+        </div>
+        
+        <div class="table-container">
+            <h2>Transaction Records</h2>
+            <table id="records-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Credit (₹)</th>
+                        <th>Source</th>
+                        <th>Spend Description</th>
+                        <th>Amount Spent (₹)</th>
+                        <th>Recipient</th>
+                        <th>Balance (₹)</th>
+                        <th>Cumulative Balance (₹)</th>
+                        <th>Ishan Payment</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody id="records-body">
+                    <!-- Records will be added here dynamically -->
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td>TOTAL</td>
+                        <td id="footer-credit">0</td>
+                        <td></td>
+                        <td id="footer-spent">0</td>
+                        <td></td>
+                        <td id="footer-balance">0</td>
+                        <td></td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+        
+        <!-- Add this modal for editing records -->
+        <div id="edit-modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Edit Record</h2>
+                <form id="edit-form">
+                    <input type="hidden" id="edit-index">
+                    <div class="form-group">
+                        <label for="edit-date">Date:</label>
+                        <input type="date" id="edit-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-credit">Credit (₹):</label>
+                        <input type="number" id="edit-credit" min="0" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-source">Source of Income:</label>
+                        <input type="text" id="edit-source" placeholder="Where money came from">
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-description">Spend Description:</label>
+                        <input type="text" id="edit-description">
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-amount">Amount Spent (₹):</label>
+                        <input type="number" id="edit-amount" min="0" step="0.01">
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-recipient">Recipient of Expense:</label>
+                        <input type="text" id="edit-recipient" placeholder="Who received the money">
+                    </div>
+                    <div class="form-group">
+                        <label for="edit-ishan-payment">Payment from Ishan:</label>
+                        <input type="checkbox" id="edit-ishan-payment">
+                        <label for="edit-ishan-payment">Received</label>
+                    </div>
+                    <button type="submit" class="btn">Update Record</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
